@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "test": "jest --ci --runInBand"
+    "test:e2e": "jest --ci --runInBand"
   },
   "dependencies": {
     "next": "latest",
