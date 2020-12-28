@@ -9,7 +9,11 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-
+    services:
+      mongodb:
+        image: mongo:4.3.0
+        ports:
+          - 27017:27017
     steps:
       - uses: actions/cache@v2
         with:
