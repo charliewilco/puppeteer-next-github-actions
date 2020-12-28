@@ -44,5 +44,6 @@ describe("E2E", () => {
     await page.click("button[type='submit']");
 
     await page.waitForSelector("[data-testid='LIST_HOME']");
+    await page.waitForSelector("[data-testid='PERSON_CARD']");
   });
 });

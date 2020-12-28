@@ -36,7 +36,7 @@ const IndexPage: NextPage<
     <div data-testid="LIST_HOME">
       {people.map((p) => (
         <div key={p._id}>
-          <div className="card">
+          <div className="card" data-testid="PERSON_CARD">
             <h5>{p.name}</h5>
             <div className="main-content">
               <p>
