@@ -1,41 +1,40 @@
-# TypeScript Next.js example
+# Puppeteer, Jest + Next.js Example
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+![E2E Testing](https://github.com/charliewilco/puppeteer-next-github-actions/workflows/E2E%20Testing/badge.svg)
 
-## Deploy your own
+This is a really simple project that shows the usage building an E2E test with [Jest](https://jestjs.io/) and [Puppeteer](https://pptr.dev/) while running your project with `next start`.
 
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
-
-## How to use it?
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+This was a reduced test case to see if GitHub Actions could run the E2E tests with the headless browswer; also uses TypeScript and MongoDB.
 
 ## Notes
 
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+This demo combines the Mongoose and TypeScript examples from Next.js to build out what we're testing.
 
+- [TypeScript Example](https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
+- [Mongoose Example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose)
+
+This demo isn't using any of the assertions from [`jest-puppeteer`](https://github.com/smooth-code/jest-puppeteer) but is using the preset and [`ts-jest`](https://github.com/kulshekhar/ts-jest) preset
+
+```javascript
+// jest.config.js
+const merge = require("merge");
+const ts = require("ts-jest/jest-preset");
+const puppeteer = require("jest-puppeteer/jest-preset");
+
+module.exports = merge.recursive(ts, puppeteer, {
+  testTimeout: 10000,
+  verbose: true,
+  testRegex: "(/__tests__/.*|(\\.|/)(spec))\\.[jt]sx?$",
+});
 ```
-npm install --save-dev typescript
+
+Tests are meant to be simple, doesn't focus on doing evaluation for assertion but to see if one of the operations catches and fails to continue.
+
+```ts
+it("should find link", async () => {
+  await page.waitForSelector("[data-testid='ABOUT_LINK']");
+  await page.click("[data-testid='ABOUT_LINK']");
+
+  await page.waitForSelector("[data-testid='ABOUT_TITLE']");
+});
 ```
-
-To enable TypeScript's features, we install the type declarations for React and Node.
-
-```
-npm install --save-dev @types/react @types/react-dom @types/node
-```
-
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.

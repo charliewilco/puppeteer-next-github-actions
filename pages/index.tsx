@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
-import Person, { ConvertedPerson } from "../db/models";
-import dbConnect from "../db/connect";
 import {
   GetServerSideProps,
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
+import Link from "next/link";
+import Layout from "../components/Layout";
+import Person, { ConvertedPerson } from "../db/models";
+import dbConnect from "../db/connect";
 
 export const getServerSideProps: GetServerSideProps<{
   people: ConvertedPerson[];

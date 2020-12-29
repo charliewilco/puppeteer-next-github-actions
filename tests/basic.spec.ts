@@ -1,6 +1,6 @@
 /// <reference types="@types/jest-environment-puppeteer" />
 
-import "expect-puppeteer";
+import { jest, it, describe, beforeAll, beforeEach } from "@jest/globals";
 
 jest.setTimeout(30000);
 

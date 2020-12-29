@@ -23,7 +23,6 @@ export default async function handler(
       break;
     case "POST":
       try {
-        console.log("posting", req.body);
         const person = await Person.create(
           req.body
         ); /* create a new model in the database */
