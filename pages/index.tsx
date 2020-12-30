@@ -5,7 +5,7 @@ import {
 } from "next";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import Person, { ConvertedPerson } from "../db/models";
+import Person, { ConvertedPerson, IPerson } from "../db/models";
 import dbConnect from "../db/connect";
 
 export const getServerSideProps: GetServerSideProps<{
@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps<{
 }> = async () => {
   await dbConnect();
 
-  const result = await Person.find({});
+  const result: IPerson[] = await Person.find({});
   const people = result.map((doc) => {
     const p = doc.toObject();
     p._id = p._id.toString();
