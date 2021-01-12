@@ -3,6 +3,10 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: weekly
+    interval: "daily"
     time: "13:00"
+  labels:
+    - "dependencies"
+    # Add default Kodiak `merge.automerge_label`
+    - "automerge"
   open-pull-requests-limit: 10
