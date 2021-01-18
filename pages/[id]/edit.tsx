@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Form from "../../components/Form";
+import Layout from "../../components/Layout";
+
 
 const fetcher = (url: string) =>
   fetch(url)
@@ -20,7 +22,10 @@ const EditPerson = () => {
   };
 
   return (
+    <Layout title="New Person">
+
     <Form formId="edit-form" initialValues={initialValues} create={false} />
+    </Layout>
   );
 };
 

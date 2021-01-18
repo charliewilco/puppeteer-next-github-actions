@@ -10,7 +10,7 @@ interface IPersonForm {
 
 export const defaultValues: IPersonForm = {
   name: "",
-  city: "",
+  city: "Seattle",
   age: 24,
 };
 
@@ -119,12 +119,15 @@ const Form: React.FC<IFormProps> = ({
   return (
     <>
       <form id={formId} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
+        <div className="form-group">
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
           <input
             type="text"
             maxLength={20}
             name="name"
+            className="form-input"
             value={form.name}
             onChange={handleChange}
             required
@@ -137,6 +140,7 @@ const Form: React.FC<IFormProps> = ({
             type="text"
             maxLength={20}
             name="city"
+            className="form-input"
             value={form.city}
             onChange={handleChange}
             required
@@ -148,12 +152,13 @@ const Form: React.FC<IFormProps> = ({
           <input
             type="number"
             name="age"
+            className="form-input"
             value={form.age}
             onChange={handleChange}
           />
         </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
