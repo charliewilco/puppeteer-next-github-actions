@@ -8,7 +8,7 @@ interface IListProps {
   id: string;
 }
 
-const ListItem = ({ id, name, age, city }: IListProps) => {
+const ListItem = ({ id, name, city }: IListProps) => {
   return (
     <div className="bg-white shadow-sm rounded p-4" data-testid="PERSON_CARD">
       <div className="grid sm:gap-6 grid-cols-12	">
