@@ -119,48 +119,69 @@ const Form: React.FC<IFormProps> = ({
   return (
     <>
       <form id={formId} onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            maxLength={20}
-            name="name"
-            className="form-input"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <div className="shadow overflow-hidden sm:rounded-md">
+          <div className="px-4 py-5 bg-white sm:p-6 grid grid-cols-6 gap-6">
+            <div className="col-span-6 sm:col-span-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                maxLength={20}
+                name="name"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div>
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            maxLength={20}
-            name="city"
-            className="form-input"
-            value={form.city}
-            onChange={handleChange}
-            required
-          />
-        </div>
+            <div className="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="city"
+                className="block text-sm font-medium text-gray-700"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                maxLength={20}
+                name="city"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                value={form.city}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div>
-          <label htmlFor="age">Age</label>
-          <input
-            type="number"
-            name="age"
-            className="form-input"
-            value={form.age}
-            onChange={handleChange}
-          />
+            <div className="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="age"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              >
+                Age
+              </label>
+              <input
+                type="number"
+                name="age"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                value={form.age}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button
+              type="submit"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Submit
+            </button>
+          </div>
         </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
       </form>
       {message && <p data-testid="RESPONSE_MESSAGE">{message}</p>}
 
