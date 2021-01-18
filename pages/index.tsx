@@ -27,16 +27,19 @@ const IndexPage: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ people }) => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <div className="hero bg-gray">
-      <div className="hero-body">
-        <h1>Hello Next.js 👋</h1>
-      </div>
-    </div>
+    <header className="py-4">
+      <h1 className="text-2xl font-bold">Contacts 👋</h1>
+    </header>
 
-    <div data-testid="LIST_HOME" className="py-2">
+    <div data-testid="LIST_HOME" className="py-2 space-y-4">
       {people.map((p) => (
-        <ListItem key={p._id} id={p._id} name={p.name} city={p.city} age={p.age} />
-        
+        <ListItem
+          key={p._id}
+          id={p._id}
+          name={p.name}
+          city={p.city}
+          age={p.age}
+        />
       ))}
     </div>
   </Layout>
