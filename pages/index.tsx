@@ -3,10 +3,10 @@ import {
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Person, { ConvertedPerson, IPerson } from "../db/models";
 import dbConnect from "../db/connect";
+import ListItem from "../components/List-Item";
 
 export const getServerSideProps: GetServerSideProps<{
   people: ConvertedPerson[];
@@ -27,33 +27,16 @@ const IndexPage: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ people }) => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a data-testid="ABOUT_LINK">About</a>
-      </Link>
-    </p>
-    <div data-testid="LIST_HOME">
-      {people.map((p) => (
-        <div key={p._id}>
-          <div className="card" data-testid="PERSON_CARD">
-            <h5>{p.name}</h5>
-            <div className="main-content">
-              <p>
-                {p.age} | {p.city}
-              </p>
+    <div className="hero bg-gray">
+      <div className="hero-body">
+        <h1>Hello Next.js 👋</h1>
+      </div>
+    </div>
 
-              <div className="btn-container">
-                <Link href="/[id]/edit" as={`/${p._id}/edit`}>
-                  <button className="btn edit">Edit</button>
-                </Link>
-                <Link href="/[id]" as={`/${p._id}`}>
-                  <button className="btn view">View</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div data-testid="LIST_HOME" className="py-2">
+      {people.map((p) => (
+        <ListItem key={p._id} id={p._id} name={p.name} city={p.city} age={p.age} />
+        
       ))}
     </div>
   </Layout>

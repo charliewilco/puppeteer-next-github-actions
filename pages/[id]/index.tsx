@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import dbConnect from "../../db/connect";
 import Person, { ConvertedPerson } from "../../db/models";
+import Layout from "../../components/Layout";
 
 export const getServerSideProps: GetServerSideProps<
   { person?: ConvertedPerson },
@@ -47,26 +48,31 @@ const DetailsPage: NextPage<
     return <h1>Not found</h1>;
   }
 
-  return (
-    <div key={person._id}>
-      <div className="card">
-        <h5 className="person-name">{person.name}</h5>
-        <div className="main-content">
-          <p className="person-name">{person.name}</p>
-          <p className="owner">Age: {person.age}</p>
+  const title = person.name + "| Edit";
 
-          <div className="btn-container">
+  return (
+    <Layout title={title}>
+      <div>
+        <div className="card">
+          <div className="card-header">
+            <div className="card-title h5">{person.name}</div>
+            <div className="card-subtitle text-gray">Age: {person.age}</div>
+            <div className="card-subtitle text-gray">City: {person.city}</div>
+          </div>
+
+          <div className="card-footer">
             <Link href="/[id]/edit" as={`/${person._id}/edit`}>
-              <button className="btn edit">Edit</button>
-            </Link>
+              <button className="btn  btn-primary">Edit</button>
+            </Link>{" "}
             <button className="btn delete" onClick={handleDelete}>
               Delete
             </button>
           </div>
         </div>
+
+        {message && <p>{message}</p>}
       </div>
-      {message && <p>{message}</p>}
-    </div>
+    </Layout>
   );
 };
 
