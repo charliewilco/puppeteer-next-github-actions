@@ -34,7 +34,7 @@
     "merge": "^2.1.1",
     "puppeteer": "^7.1.0",
     "ts-jest": "^26.5.1",
-    "typescript": "4.1"
+    "typescript": "4.2"
   },
   "license": "MIT"
 }
