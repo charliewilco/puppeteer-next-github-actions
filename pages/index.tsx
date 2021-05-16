@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<{
     return p;
   });
 
-  return { props: { people } };
+  return { props: { people: people ?? [] } };
 };
 
 const IndexPage: NextPage<

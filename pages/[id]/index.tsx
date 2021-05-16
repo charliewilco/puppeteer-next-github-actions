@@ -38,7 +38,7 @@ const DetailsPage: NextPage<
     const id = router.query.id;
 
     try {
-      await fetch(`/api/peop_e/${id}`, {
+      await fetch(`/api/people/${id}`, {
         method: "Delete",
       });
       router.push("/");
