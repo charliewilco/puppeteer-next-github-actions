@@ -12,20 +12,23 @@ import Layout from "../../components/Layout";
 import Avatar from "../../components/Avatar";
 
 export const getServerSideProps: GetServerSideProps<
-  { person?: ConvertedPerson },
+  { person?: ConvertedPerson | null },
   { id: string }
 > = async ({ params }) => {
   await dbConnect();
 
   if (params?.id) {
     const person = await Person.findById(params.id).lean();
-    person._id = person._id.toString();
+    if (person !== null) {
+      person._id = person._id.toString();
+    }
 
     return { props: { person } };
   }
 
-  return { props: { person: undefined } };
+  return { props: { person: null } };
 };
+
 const DetailsPage: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ person }) => {

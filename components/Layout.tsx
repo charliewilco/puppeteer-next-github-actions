@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import cx from "@sindresorhus/class-names";
+import { classNames as cx } from "./classNames";
 
 type Props = {
   children?: ReactNode;
