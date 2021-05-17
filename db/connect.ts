@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const url = "mongodb://127.0.0.1:27017/next-js-demo";
+const url = process.env.DB_ADDRESS || "mongodb://127.0.0.1:27017/next-js-demo";
 
 interface IConnectionStatus {
   isConnected?: number;
