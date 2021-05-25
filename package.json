@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
-    "@tailwindcss/typography": "^0.4.0",
+    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.2.5",
     "mongoose": "^5.12.10",
     "next": "latest",
